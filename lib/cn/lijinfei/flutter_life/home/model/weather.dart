@@ -1,0 +1,21 @@
+class Weather{
+//  String airCondition;//": "优",
+//  String "city": "海淀",
+//  String "coldIndex": "易发期",
+//  String "date": "2019-02-20",
+//  String "distrct": "海淀",
+//  String "dressingIndex": "薄冬衣",
+//  String "exerciseIndex": "不适宜",
+//  String "humidity": "湿度：18%",
+//  String "pollutionIndex": "49",
+//  String "province": "北京",
+//  String "sunrise": "07:33",
+//  String "sunset": "16:53",
+  String temperature;//": "7℃",
+//  String "time": "15:50",
+//  String "updateTime": "20190220161409",
+//  String "washIndex": "非常适宜",
+//  String "weather": "晴",
+//  String "week": "周三",
+//  String "wind": "东风1级"
+}
