@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_life/cn/lijinfei/flutter_life/home/bloc/home_bloc.dart';
 import 'package:flutter_life/cn/lijinfei/flutter_life/home/ui/home.dart';
 import 'package:flutter_life/cn/lijinfei/flutter_life/home/ui/other_page.dart';
 import 'package:flutter_life/cn/lijinfei/flutter_life/setting/ui/setting.dart';
+import 'package:flutter_life/cn/lijinfei/flutter_life/utils/common/bloc_provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeWidget(),
+      home:BlocProvider<HomeBloc>(
+        bloc: HomeBloc(),
+        child: HomeWidget(),
+      ),
       routes: <String, WidgetBuilder> {
         //'/a': (BuildContext context) => new OtherPage(),
       },

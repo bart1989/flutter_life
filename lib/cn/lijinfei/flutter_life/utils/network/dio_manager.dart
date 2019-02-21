@@ -8,6 +8,7 @@ class DioManager {
       //拦截器添加
       _dio.interceptors.add(InterceptorsWrapper(
           onRequest:(RequestOptions options){
+            print('uri'+options.uri.toString());
             // Do something before request is sent
             return options; //continue
             // If you want to resolve the request with some custom data，

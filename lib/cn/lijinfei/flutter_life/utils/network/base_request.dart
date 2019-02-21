@@ -7,19 +7,25 @@ import 'package:rxdart/rxdart.dart';
 
 abstract class BaseRequest{
 
-  Observable<Response<String>> doRequest(){
+  Observable<Response<String>> doRequest({CancelToken token}){
     Dio dio = DioManager.getDioSingleInstance();
-    CancelToken token = new CancelToken();
-    Future<Response<String>> future =dio.post(
-      requestUrl(),
-      options: requestOptions(),
-      data: getParams(),
-      cancelToken:token,
-    );
-    Observable<Response<String>> obs = Observable.fromFuture(future).doOnCancel((){
-      print("token.cancel();");
-      token.cancel();
-    });
+    Future<Response<String>> future;
+    if(requestType()=="POST"){
+      future =dio.post(
+        requestUrl(),
+        options: requestOptions(),
+        data: getParams(),
+        cancelToken:token,
+      );
+    }else if(requestType()=="GET"){
+      future =dio.get(
+        requestUrl(),
+        options: requestOptions(),
+        cancelToken:token,
+      );
+    }
+
+    Observable<Response<String>> obs = Observable.fromFuture(future);
     return obs;
   }
 
@@ -34,5 +40,10 @@ abstract class BaseRequest{
     );
     return opt;
   }
+
+  String requestType(){
+    return "POST";
+  }
+
 
 }
