@@ -16,7 +16,7 @@ class HomeWidget extends StatelessWidget{
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sample Code'),
+        title: Text('Weather'),
       ),
       body: Center(
         child: StreamBuilder<Weather>(
