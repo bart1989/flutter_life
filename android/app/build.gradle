@@ -39,15 +39,36 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                AMAP_KEY : "a3d0e40eec3269372a137371bfb2dc30", /// 高德地图key
+        ]
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword 'ik,123'
+            storeFile file('voteAppKey.key.jks')
+            storePassword 'ik,123'
+        }
+        debug {
+            keyAlias 'key0'
+            keyPassword 'ik,123'
+            storeFile file('voteAppKey.key.jks')
+            storePassword 'ik,123'
+        }
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
+
 }
 
 flutter {

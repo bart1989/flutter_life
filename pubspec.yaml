@@ -21,7 +21,10 @@ dependencies:
   cupertino_icons: ^0.1.2
   dio:
   rxdart:
-  location: ^2.0.0
+#  location: ^2.0.0
+  amap_location:
+    git:
+      url: https://github.com/bart1989/flutter_amap_location.git
 #  json_annotation: ^2.0.0
 
 

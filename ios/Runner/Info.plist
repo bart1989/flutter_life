@@ -50,5 +50,9 @@
     <!-- 始终访问位置 -->
     <key>NSLocationAlwaysUsageDescription</key>
     <string>App需要您的同意,才能始终访问位置</string>
+
+    <!-- 始终访问位置 -->
+    <key>AMAP_KEY</key>
+    <string>b3edb63ce6aa5dc8fa53f0f81d917fb1</string>
 </dict>
 </plist>

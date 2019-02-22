@@ -9,7 +9,8 @@ import 'package:flutter_life/cn/lijinfei/flutter_life/home/request/location_requ
 import 'package:flutter_life/cn/lijinfei/flutter_life/home/request/weather_request.dart';
 import 'package:flutter_life/cn/lijinfei/flutter_life/utils/common/bloc_provider.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:location/location.dart';
+//import 'package:location/location.dart';
+import 'package:amap_location/amap_location.dart';
 
 class HomeBloc implements BlocBase{
 
@@ -81,6 +82,31 @@ class HomeBloc implements BlocBase{
   }
 
   void requestLocation() {
+     AMapLocationClient.startup(new AMapLocationOption( desiredAccuracy:CLLocationAccuracy.kCLLocationAccuracyHundredMeters))
+         .then((bool flag){
+       Observable<AMapLocation> obs = Observable.fromFuture(AMapLocationClient.getLocation(true));
+       obs.flatMap((AMapLocation locationData){
+         String locationStr = locationData.latitude.toString()+","+locationData.longitude.toString();
+         print("locationStr:"+locationStr);
+         return locationAddress(locationStr);
+       }).flatMap((LocationModel model){
+         String province = model.addressComponent.province.replaceAll(new RegExp('省'), "").replaceAll(new RegExp('市'), "");
+         String city = model.addressComponent.city.replaceAll(new RegExp('市'), "").replaceAll(new RegExp('区'), "");;
+         String locationInfoStr = "city="+city+"&province="+province;
+         print("locationInfoStr:"+locationInfoStr);
+         return requestWeatherData(locationInfoStr);
+       }).doOnListen((){
+         print("开始监听，展示个loading");
+       }).doOnCancel((){
+         print("取消监听，取消个loading");
+
+       }).listen((Weather weather){
+         print(weather);
+         steamSink.add(weather);
+       });
+     });
+
+/*
     var location = new Location();
     //检查权限，iOS设备会在第一次调用时弹出允许对话框
     location.hasPermission().then((bool flag){
@@ -111,6 +137,7 @@ class HomeBloc implements BlocBase{
     } on Exception {
       location = null;
     }
+    */
   }
 
   @override
