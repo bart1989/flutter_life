@@ -1,17 +1,13 @@
 # flutter_life
 
-A new Flutter application.
+flutter写的天气预报示例app
+其中使用了
+·rxdart响应式框架
+·dio网络请求及离散式api封装
+·简单明了的bloc结构
+·高德地图插件获取位置[期望使用不依赖平台的定位获取方式，可能会自己封装]
+·百度api进行经纬度逆地理编码
+·mob平台的天气api
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
 
