@@ -1,6 +1,6 @@
 # flutter_life
 
-flutter写的天气预报示例app
+flutter写的天气预报示例app <\br>
 其中使用了
 ·rxdart响应式框架
 ·dio网络请求及离散式api封装
